@@ -1,25 +1,25 @@
 {
   "logs": [
     {
-      "message": "change cable in network 001",
-      "attention": true,
-      "tech": "John Doe",
-      "date": "2020-01-02T18:08:55.428Z",
-      "id": 1
-    },
-    {
-      "message": "harddrive failed in workstaion 002",
-      "attention": true,
-      "tech": "Sarah Wilson",
-      "date": "2020-01-02T18:09:34.804Z",
-      "id": 2
-    },
-    {
-      "message": "cable self eject at workstation 005",
+      "id": 1,
+      "message": "change cable in network 001 (FIXED)",
       "attention": false,
+      "tech": "Sarah Wilson",
+      "date": "2020-01-02T20:55:07.517Z"
+    },
+    {
+      "id": 2,
+      "message": "harddrive failed in workstaion 002 (fixed!)",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2020-01-02T21:13:50.841Z"
+    },
+    {
+      "id": 3,
+      "message": "cable self eject at workstation 005",
+      "attention": true,
       "tech": "Sam Smith",
-      "date": "2020-01-02T18:11:35.598Z",
-      "id": 3
+      "date": "2020-01-02T21:18:45.692Z"
     }
   ],
   "techs": [
