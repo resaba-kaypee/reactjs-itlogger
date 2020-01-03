@@ -37,26 +37,6 @@
       "id": 3,
       "firstName": "Kevin",
       "lastName": "Williams"
-    },
-    {
-      "firstName": "Jennifer",
-      "lastName": "Williams",
-      "id": 4
-    },
-    {
-      "firstName": "Jen",
-      "lastName": "Wilson",
-      "id": 5
-    },
-    {
-      "firstName": "Greg",
-      "lastName": "Harris",
-      "id": 6
-    },
-    {
-      "firstName": "Jill",
-      "lastName": "Johnson",
-      "id": 7
     }
   ]
 }
