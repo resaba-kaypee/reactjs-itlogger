@@ -2,10 +2,10 @@
   "logs": [
     {
       "id": 1,
-      "message": "change cable in network 001 (FIXED)",
-      "attention": false,
-      "tech": "Sarah Wilson",
-      "date": "2020-01-02T20:55:07.517Z"
+      "message": "change cable in network 001 (BROKE AGAIN)",
+      "attention": true,
+      "tech": "Sam Smith",
+      "date": "2020-01-03T20:24:44.244Z"
     },
     {
       "id": 2,
