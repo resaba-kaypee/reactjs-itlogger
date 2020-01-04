@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://raven123:raven123@itlogger-m6tzg.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://raven123:raven123@itlogger-m6tzg.mongodb.net/test?retryWrites=true&w=majority",
+  "mongoURILoc": "mongodb://localhost:27017/ITLogger"
 }
