@@ -42,7 +42,7 @@ router.post(
 // @access public
 router.get("/", async (req, res) => {
   try {
-    const logs = await Log.find().sort({ date: -1 });
+    const logs = await Log.find({}).sort({ date: -1 });
     res.json(logs);
   } catch (err) {
     console.error(err.message);

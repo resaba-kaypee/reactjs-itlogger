@@ -9,8 +9,10 @@ import {
   CLEAR_CURRENT,
   SEARCH_LOGS
 } from "../actions/types";
+
 const initialState = {
   logs: null,
+  filtered: null,
   current: null,
   loading: false,
   error: null
@@ -27,26 +29,29 @@ export default (state = initialState, action) => {
     case ADD_LOG:
       return {
         ...state,
-        logs: [...state.logs, action.payload],
+        logs: [action.payload, ...state.logs],
         loading: false
       };
     case DELETE_LOG:
       return {
         ...state,
-        logs: state.logs.filter(log => log.id !== action.payload),
+        logs: state.logs.filter(log => log._id !== action.payload),
         loading: false
       };
     case UPDATE_LOG:
       return {
         ...state,
         logs: state.logs.map(log =>
-          log.id === action.payload.id ? action.payload : log
+          log._id === action.payload._id ? action.payload : log
         )
-      };
+      }; 
     case SEARCH_LOGS:
       return {
         ...state,
-        logs: action.payload
+        filtered: state.logs.filter(log => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return log.message.match(regex) || log.date.match(regex);
+        })
       }
     case SET_CURRENT:
       return {

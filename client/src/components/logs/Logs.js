@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 import LogItem from "./LogItem";
 import Preloader from "../layout/Preloader";
 
-const Logs = ({ log: { logs, loading }, getLogs }) => {
+const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
   }, []);
 
-  if (loading || logs === null) {
-    return <Preloader />;
+  if (logs !== null && logs.length === 0 && !loading) {
+    return <h4>No logs...</h4>
   }
 
   return (
@@ -20,14 +20,22 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
       <li className="collection-header">
         <h4 className="center">System Logs</h4>
       </li>
-      {!loading && logs.length === 0 ? (
-        <p className="center">No logs to show...</p>
+      {logs !== null && !loading ? (
+        filtered !== null 
+          ? filtered.map(log => (
+            <LogItem key={log._id} log={log} />
+            ))
+          : logs.map(log => (
+            <LogItem key={log._id} log={log} />
+            ))
       ) : (
-        logs.map(log => <LogItem key={log.id} log={log} />)
+        <Preloader/>
       )}
     </ul>
   );
 };
+
+
 
 Logs.propTypes = {
   log: PropTypes.object.isRequired,

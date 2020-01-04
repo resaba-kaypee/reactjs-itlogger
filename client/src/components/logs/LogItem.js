@@ -6,9 +6,9 @@ import Moment from "react-moment";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const LogItem = ({ log, deleteLog, setCurrent }) => {
-  const { id, message, tech, date, attention } = log;
+  const { _id, message, tech, date, attention } = log;
   const onDelete = () => {
-    deleteLog(id);
+    deleteLog(_id);
     M.toast({ html: "Log Deleted" });
   };
   return (
@@ -23,7 +23,7 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
         </a>
         <br />
         <span className="grey-text">
-          <span className="black-text">ID #{id}</span> last updated by{" "}
+          <span className="black-text">ID #{_id}</span> last updated by{" "}
           <span className="black-text">{tech}</span> on{" "}
           <Moment format="MMMM Do YYYY, h:mm:ss a">{date}</Moment>
         </span>

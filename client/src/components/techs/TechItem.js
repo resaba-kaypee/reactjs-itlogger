@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
-const TechItem = ({ tech: { firstName, lastName, id }, deleteTech }) => {
+const TechItem = ({ tech: { firstName, lastName, _id }, deleteTech }) => {
   const onDelete = () => {
-    deleteTech(id)
+    deleteTech(_id)
     M.toast({ html: `${firstName} ${lastName} was deleted` });
   }
   return (

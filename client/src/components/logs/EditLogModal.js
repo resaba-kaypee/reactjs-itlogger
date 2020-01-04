@@ -23,12 +23,13 @@ const EditLogModal = ({ current, updateLog }) => {
       M.toast({ html: "Please enter a message and tech" });
     } else {
       const updtLog = {
-        id: current.id,
+        id: current._id,
         message,
         attention,
         tech,
         date: new Date()
       };
+
       updateLog(updtLog);
       M.toast({ html: `Log updated by ${tech}` });
       // clear fields
