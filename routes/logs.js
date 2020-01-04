@@ -83,8 +83,17 @@ router.put("/:id", async (req, res) => {
 // @route DELETE api/log/:id
 // @dec Delete a log
 // @access public
-router.delete("/:id", (req, res) => {
-  res.send("Delete a log");
+router.delete("/:id", async (req, res) => {
+  try {
+    let log = await Log.findById(req.params.id);
+    if (!log) return res.status(404).json({ msg: "Log not found" });
+    await Log.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: "Log removed" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 });
 
 module.exports = router;
