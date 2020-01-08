@@ -22,6 +22,7 @@ const EditLogModal = ({ current, updateLog }) => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" });
     } else {
+
       const updtLog = {
         id: current._id,
         message,
@@ -29,9 +30,9 @@ const EditLogModal = ({ current, updateLog }) => {
         tech,
         date: new Date()
       };
-
       updateLog(updtLog);
       M.toast({ html: `Log updated by ${tech}` });
+
       // clear fields
       setMessage("");
       setTech("");
@@ -64,7 +65,7 @@ const EditLogModal = ({ current, updateLog }) => {
               <option value="" disabled>
                 Select Technician
               </option>
-              <TechSelectOptions/>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -77,7 +78,7 @@ const EditLogModal = ({ current, updateLog }) => {
                   className="filled-in"
                   checked={attention}
                   value={attention}
-                  onChange={e => setAttention(!attention)}
+                  onChange={() => setAttention(!attention)}
                 />
                 <span>Needs Attention</span>
               </label>

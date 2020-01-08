@@ -7,7 +7,8 @@ import {
   UPDATE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  CLEAR_SEARCH
 } from "./types";
 
 // Get logs from server
@@ -101,10 +102,17 @@ export const updateLog = log => async dispatch => {
 
 // Search logs from server
 export const searchLogs = text => dispatch => {
-    dispatch({
-      type: SEARCH_LOGS,
-      payload: text
-    });
+  dispatch({
+    type: SEARCH_LOGS,
+    payload: text
+  });
+};
+
+// Clear search
+export const clearSearch = () => {
+  return { 
+    type: CLEAR_SEARCH 
+  };
 };
 
 // Set current log

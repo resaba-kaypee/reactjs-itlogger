@@ -59,21 +59,26 @@ router.put("/:id", async (req, res) => {
   // build log object
   const logFields = {};
   if (message) logFields.message = message;
-  if (attention) logFields.attention = attention;
+  if (attention === Boolean(attention)) logFields.attention = attention;
   if (tech) logFields.tech = tech;
   if (date) logFields.date = date;
 
+  console.log('req.body:', attention)
+  console.log('logFields:', logFields.attention)
+  
   try {
     let log = await Log.findById(req.params.id);
     if (!log) return res.status(404).json({ msg: "Log not found" });
 
-    log = await Log.findByIdAndUpdate(
+    await Log.findByIdAndUpdate(
       req.params.id,
       { $set: logFields },
-      { new: true }
+      { new: true },
+      ((err, result) => {
+        console.log('after:' + result)
+        res.json(result);
+      })
     );
-
-    res.json(log);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

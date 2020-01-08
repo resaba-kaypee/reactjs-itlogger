@@ -7,7 +7,8 @@ import {
   UPDATE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  CLEAR_SEARCH
 } from "../actions/types";
 
 const initialState = {
@@ -52,6 +53,11 @@ export default (state = initialState, action) => {
           const regex = new RegExp(`${action.payload}`, "gi");
           return log.message.match(regex) || log.date.match(regex);
         })
+      }
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        filtered: null
       }
     case SET_CURRENT:
       return {

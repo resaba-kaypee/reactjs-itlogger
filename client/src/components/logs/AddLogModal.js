@@ -11,8 +11,10 @@ const AddLogModal = ({ addLog }) => {
   const [tech, setTech] = useState("");
 
   const onSubmit = () => {
-    if (message === "" || tech === "") {
-      M.toast({ html: "Please enter a message and tech" });
+    if (!/^[a-zA-Z0-9][\w.\s]+$/i.test(message)) {
+      M.toast({ html: "Please enter a valid message" });
+    } else if (tech === "") {
+      M.toast({ html: "Please add a tech" });
     } else {
       const newLog = {
         message,

@@ -14,7 +14,7 @@ export const getTechs = () => async dispatch => {
     const data = await res.json();
 
     dispatch({
-      type: GET_TECHS, 
+      type: GET_TECHS,
       payload: data
     });
   } catch (err) {

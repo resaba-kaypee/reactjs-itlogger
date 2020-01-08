@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { searchLogs } from "../../actions/logActions";
+import { searchLogs, clearSearch } from "../../actions/logActions";
 
-const Searchbar = ({ log, searchLogs }) => {
+const Searchbar = ({ log, searchLogs, clearSearch }) => {
   const text = useRef("");
+  
   useEffect(() => {
     if (log.filtered === null) {
       text.current.value = "";
@@ -14,6 +15,8 @@ const Searchbar = ({ log, searchLogs }) => {
   const onChange = e => {
     if(text.current.value !== ""){
       searchLogs(text.current.value);
+    } else {
+      clearSearch();
     }
   };
   return (
@@ -40,11 +43,12 @@ const Searchbar = ({ log, searchLogs }) => {
 };
 
 Searchbar.propTypes = {
-  searchLogs: PropTypes.func.isRequired
+  searchLogs: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   log: state.log
 });
 
-export default connect(mapStateToProps, { searchLogs })(Searchbar);
+export default connect(mapStateToProps, { searchLogs, clearSearch })(Searchbar);
